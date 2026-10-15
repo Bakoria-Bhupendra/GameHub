@@ -1,11 +1,10 @@
-import apiClient from "@/service/api-client";
-import { CanceledError } from "axios";
-import { useEffect, useState } from "react";
+
 import useData from "./useData";
 
 export interface Genre {
     id: number;
-    name: string;   
+    name: string;  
+    image_background: string; 
 }
 
 
