@@ -1,8 +1,25 @@
 import useGenres from "@/hooks/useGenres";
-import { HStack, Image, List, Text } from "@chakra-ui/react";
+import { HStack, Image, List, Spinner, Text } from "@chakra-ui/react";
+import { LuLoader } from "react-icons/lu";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, loading, error } = useGenres();
+
+  if (error) return null;
+
+  if (loading)
+    return (
+      <Spinner
+        asChild
+        borderWidth="0"
+        color="blue.500"
+        css={{ "--spinner-track-color": "colors.gray.200" }}
+        size="lg"
+      >
+        <LuLoader />
+      </Spinner>
+    );
+
   return (
     <List.Root listStyleType="none">
       {data.map((genre) => (
